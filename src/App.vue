@@ -22,9 +22,9 @@
     <div :class="contenedor"></div>
     <br /><br /><br />
     <form @submit="enviarFormulario">
-    <input type="text" v-model="inputForm" />  
+      <!-- <input type="text" v-model="inputForm" />   -->
       <textarea  cols="30" rows="10" v-model="inputForm"></textarea>
-      <!-- <input type="submit" value="Enviar" /> -->
+      <input type="submit" value="Enviar" />
     </form>
     <br />
     <p>{{ parrafo }}</p>
