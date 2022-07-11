@@ -1,96 +1,86 @@
 <template>
-  <div class="">
-    <h1 class="texto-rojo">{{ nombre }}</h1>
-    <h2 :class="clasePruebas" v-text="codigo"></h2>
-    <p v-html="textoHtml"></p>
-    <input class="input-grande" type="text" v-model="img" />
-    <br />
-    <img :src="img" alt="" />
-    <br />
-    <br />
-    <button @click="incrementarContador()">botoncito {{ contador }}</button>
-    <br />
-    <input type="text" @keyup="presionarTecla()" v-model="inputEvento" />
-    <br />
-
-    <select @change="cambiarColor" v-model="colorContenedor">
-      <option value="contenedor azul">azul</option>
-      <option value="contenedor rojo">rojo</option>
-      <option value="contenedor amarillo">amarillo</option>
-    </select>
-
-    <div :class="contenedor"></div>
-    <br /><br /><br />
-    <form @submit="enviarFormulario">
-      <!-- <input type="text" v-model="inputForm" />   -->
-      <textarea  cols="30" rows="10" v-model="inputForm"></textarea>
-      <input type="submit" value="Enviar" />
-    </form>
-    <br />
-    <p>{{ parrafo }}</p>
+  <div class="contenedor-principal">
+    <h1 class="titulo-principal">CARTAS DE CARRITOS</h1>
+    <div class="cartas">
+      <NuevoComponente
+        :titulo="'Lamborghini'"
+        :descripcion="lorem"
+        :imagen="imagenes[0]"
+      />
+      <NuevoComponente
+        :titulo="'Ferrari'"
+        :descripcion="lorem"
+        :imagen="imagenes[1]"
+      />
+      <NuevoComponente
+        :titulo="'Maserati'"
+        :descripcion="lorem"
+        :imagen="imagenes[2]"
+      />
+      <NuevoComponente
+        :titulo="'BMW'"
+        :descripcion="lorem"
+        :imagen="imagenes[3]"
+      />
+      <NuevoComponente
+        :titulo="'Mercedes Benz'"
+        :descripcion="lorem"
+        :imagen="imagenes[4]"
+      />
+      <NuevoComponente
+        :titulo="'Audi'"
+        :descripcion="lorem"
+        :imagen="imagenes[5]"
+      />
+    </div>
   </div>
 </template>
 <script>
+import NuevoComponente from "./components/NuevoComponente.vue";
+// import { watch } from "@vue/runtime-core";
 export default {
   name: "App",
   data() {
     return {
-      nombre: "Jhony Alejandro Caro Umbariba",
-      codigo: "20191020055",
-      textoHtml: "<h1>Texto probando el v-html.</h1>",
-      img: "https://picsum.photos/800/50",
-      clasePruebas: "texto-azul",
-      contador: 0,
-      inputEvento: "",
-      contenedor: "contenedor verde",
-      colorContenedor: "contenedor azul",
-      inputForm: "",
-      parrafo: "",
+      imagenes: [
+        "https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/models_gw/hero-banner/2022/04_12/gate_models_og_01.jpg",
+        "https://phantom-expansion.unidadeditorial.es/9a14c3fda6b79d4f2f58df87b33d61a0/crop/0x725/2043x1875/resize/1200/f/webp/assets/multimedia/imagenes/2022/05/20/16530388017130.jpg",
+        "https://www.diariomotor.com/imagenes/2017/07/maserati-01-marca-1536x909.jpg",
+        "https://img.remediosdigitales.com/3a9597/bmw-serie-8-coupe_7/1366_2000.jpg",
+        "https://autosdeprimera.com/wp-content/uploads/2021/07/mercedes-amg-e-53-4matic-coupe.jpg",
+        "https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2021/03/video-conducir-audi-rs-tron-gt-256-km-h-autobahn-silencio-2256587.jpg?itok=san-w9J_",
+      ],
+      lorem:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto dignissimos accusamus, adipisci eveniet error sed dicta laboriosam ex consequuntur explicabo quod temporibus veniam neque sunt asperiores quidem debitis rem qui?",
     };
   },
-  methods: {
-    incrementarContador() {
-      this.contador++;
-    },
-    presionarTecla() {
-      alert(this.inputEvento);
-    },
-    cambiarColor() {
-      this.contenedor = this.colorContenedor;
-    },
-    enviarFormulario() {
-      this.parrafo = this.inputForm;
-    },
-  },
+  methods: {},
+  computed: {},
+  // watch: {},
+  components: { NuevoComponente },
 };
 </script>
 <style>
-.texto-azul {
-  color: blue;
+* {
+  font-family: "Lato", sans-serif;
 }
-.texto-rojo {
-  color: red;
-  background-color: black;
+
+body {
+  background: rgb(230, 230, 230);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.input-grande {
-  width: 20%;
-  height: 25px;
-  margin: 5px;
+.contenedor-principal {
+  text-align: center;
 }
-.contenedor {
-  width: 100px;
-  height: 100px;
+.titulo-principal {
+  color: rgb(145, 71, 71);
+  text-shadow: 1px 1px 2px black;
+  font-weight: 900;
 }
-.verde {
-  background-color: green;
-}
-.azul {
-  background-color: blue;
-}
-.rojo {
-  background-color: red;
-}
-.amarillo {
-  background-color: yellow;
+.cartas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
 }
 </style>
